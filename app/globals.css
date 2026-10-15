@@ -1,26 +1,85 @@
-@import "tailwindcss";
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-ivory text-navy-900 dark:bg-navy-950 dark:text-slate-100 transition-colors duration-500;
+    font-family: var(--font-sans);
+  }
+  ::selection {
+    @apply bg-gold-400/40 text-navy-900;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.font-display {
+  font-family: var(--font-display);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark .glass {
+  background: rgba(10, 22, 40, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #e8c874 0%, #d4af37 50%, #a8871e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-text-shimmer {
+  background: linear-gradient(90deg, #a8871e 0%, #e8c874 25%, #fff8dc 50%, #e8c874 75%, #a8871e 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gold-sweep 4s linear infinite;
+}
+
+@keyframes gold-sweep {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.gold-glow {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.luxury-card {
+  position: relative;
+  border-radius: 1rem;
+  @apply bg-white dark:bg-navy-800 border border-slate-200 dark:border-white/5 shadow-xl transition-all duration-500;
+}
+.luxury-card:hover {
+  transform: translateY(-4px);
+  @apply border-gold-400/40 shadow-2xl;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { @apply bg-ivory dark:bg-navy-950; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d4af37, #a8871e);
+  border-radius: 10px;
 }
