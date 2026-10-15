@@ -2,25 +2,24 @@
 import VideoHero from "@/components/hero/VideoHero";
 import TrustStrip from "@/components/sections/TrustStrip";
 import HausaWelcome from "@/components/sections/HausaWelcome";
-import About from "@/components/sections/About";
-import ChinaTrade from "@/components/sections/ChinaTrade";
-import Services from "@/components/sections/Services";
-import Products from "@/components/sections/Products";
-import Process from "@/components/sections/Process";
+import HomeTeaser from "@/components/sections/HomeTeaser";
 import CTA from "@/components/sections/CTA";
 
 export default function Home() {
   return (
     <main>
+      {/* 2-Second Welcome Modal */}
       <WelcomePopup />
+
+      {/* SCROLL 1: Cinematic Video Hero */}
       <VideoHero />
+
+      {/* SCROLL 2: Trust Highlights, Hausa Welcome & Gateway Cards */}
       <TrustStrip />
       <HausaWelcome />
-      <About />
-      <ChinaTrade />
-      <Services />
-      <Products />
-      <Process />
+      <HomeTeaser />
+
+      {/* SCROLL 3: Executive Conversion Banner */}
       <CTA />
     </main>
   );
